@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p></p>
+        <Message :msg="msg" v-show="msg" />
         <div>
             <form id="burger-form">
                 <div class="input-container" @submit="createBurger">
@@ -39,6 +39,8 @@
 <!-- No data: os plurais é porque são dados que vêm do servidor. Os singulares são os dados inhtroduzidos.
     Os opcionais [] é porque pode ser escolhido mais que um. -->
 <script>
+import Message from './Message.vue';
+
 export default {
     name: "BurgerForm",
     data() {
@@ -51,13 +53,15 @@ export default {
             carne: null,
             opcionais: [],
             msg: null
-        }
+        };
+    },
+    components: {
+        Message
     },
     methods: {
         async getIngredientes() {
             const req = await fetch("http://localhost:3000/ingredientes");
             const data = await req.json();
-
             this.paes = data.paes;
             this.carnes = data.carnes;
             this.opcionaisdata = data.opcionais;
@@ -72,24 +76,33 @@ export default {
             pao: this.pao,
             opcionais: Array.from(this.opcionais),
             status: "Pedido"
-        }
+        };
         const dataJson = JSON.stringify(data);
-
         const req = await fetch("http://localhost:3000/burgers", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: dataJson
         });
+
         const res = await req.json();
-        
+
+        // Mensagem do sistema
+        this.msg = `Pedido Nº ${res.id} efetuado com sucesso!`;
+
+        // Limpar a mensagem do sistema
+        setTimeout(() => this.msg = "", 3000);
+
         // Limpar os campos
-        this.nome = ""
-        this.carne = ""
-        this.pao = ""
-        this.opcionais = []
+        this.nome = "";
+        this.carne = "";
+        this.pao = "";
+        this.opcionais = [];
     },
-    mounted () {
-    this.getIngredientes()
+    mounted() {
+        this.getIngredientes();
+    },
+    components: {
+      Message
     }
 }
 </script>
