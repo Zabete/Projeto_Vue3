@@ -1,7 +1,9 @@
 <template>
-    <footer id="footer">
-        <p>Burger &copy; 09/2023</p>
-    </footer>
+    <div>
+        <footer id="footer">
+            <p>Burger &copy; 09/2023</p>
+        </footer>
+    </div>
 </template>
 
 <script>

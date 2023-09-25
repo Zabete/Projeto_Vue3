@@ -1,40 +1,40 @@
 <!-- O v-if neste caso e para verificar se já existe algum pedido de hambúrguer no sistema. -->
 
 <template>
-    <div id="burger-table" v-if="burgers">
-        <Message :msg="msg" v-show="msg" />
-      <div>
-        <div id="burger-table-heading">
-          <div class="order-id">#:</div>
-          <div>Cliente:</div>
-          <div>Pão:</div>
-          <div>Carne:</div>
-          <div>Opcionais:</div>
-          <div>Ações:</div>
-        </div>
+  <div id="burger-table" v-if="burgers">
+    <Message :msg="msg" v-show="msg" />
+    <div>
+      <div id="burger-table-heading">
+        <div class="order-id">#:</div>
+        <div>Cliente:</div>
+        <div>Pão:</div>
+        <div>Carne:</div>
+        <div>Opcionais:</div>
+        <div>Ações:</div>
       </div>
-      <div id="burger-table-rows">
-        <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
-          <div class="order-number">{{ burger.id }}</div>
-          <div>{{ burger.nome }}</div>
-          <div>{{ burger.pao }}</div>
-          <div>{{ burger.carne }}</div>
-          <div>
-            <ul>
-                <li v-for="(opcional, index) in burger.opcionais" :key="index">{{ opcional }}</li>
-            </ul>
-          </div>
-          <div>
-            <select name="status" class="status" @change="updateBurger($event, burger.id)">
-              <option v-for="s in status" :key="s.id" :value="s.tipo" :selected="burger.status == s.tipo">
-                {{ s.tipo }}
-              </option>
-            </select>
-            <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
-          </div>
+    </div>
+    <div id="burger-table-rows">
+      <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
+        <div class="order-number">{{ burger.id }}</div>
+        <div>{{ burger.nome }}</div>
+        <div>{{ burger.pao }}</div>
+        <div>{{ burger.carne }}</div>
+        <div>
+          <ul>
+            <li v-for="(opcional, index) in burger.opcionais" :key="index">{{ opcional }}</li>
+          </ul>
+        </div>
+        <div>
+          <select name="status" class="status" @change="updateBurger($event, burger.id)">
+            <option v-for="s in status" :key="s.id" :value="s.tipo" :selected="burger.status == s.tipo">
+              {{ s.tipo }}
+            </option>
+          </select>
+          <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
         </div>
       </div>
     </div>
+  </div>
     <div v-else>
       <h2>Não há pedidos no momento!</h2>
     </div>
