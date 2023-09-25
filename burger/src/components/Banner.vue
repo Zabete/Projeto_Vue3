@@ -1,7 +1,7 @@
 <template>
-    <div id="main-banner">
-        <h1>Burger</h1>
-    </div>
+  <div id="main-banner">
+    <h1>Burger</h1>
+  </div>
 </template>
 
 <script>
