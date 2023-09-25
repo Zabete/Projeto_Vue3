@@ -77,5 +77,37 @@
       "tipo": "Terminado"
     }
   ],
-  "burgers": []
+  "burgers": [
+    {
+      "nome": "Maria",
+      "carne": "Alcatra",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Em produção",
+      "id": 2
+    },
+    {
+      "nome": "Maria",
+      "carne": "Picanha",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Cheddar"
+      ],
+      "status": "Terminado",
+      "id": 4
+    },
+    {
+      "nome": "Ticha",
+      "carne": "Veggie burger",
+      "pao": "Integral",
+      "opcionais": [
+        "Tomate",
+        "Pepino"
+      ],
+      "status": "Pedido",
+      "id": 5
+    }
+  ]
 }

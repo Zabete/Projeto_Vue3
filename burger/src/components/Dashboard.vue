@@ -1,5 +1,4 @@
 <!-- O v-if neste caso e para verificar se já existe algum pedido de hambúrguer no sistema. -->
-
 <template>
   <div id="burger-table" v-if="burgers">
     <Message :msg="msg" v-show="msg" />
